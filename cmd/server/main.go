@@ -30,11 +30,11 @@ func main() {
 		conn,
 		routing.ExchangePerilTopic,
 		routing.GameLogSlug,
-		routing.GameLogSlug + ".*",
+		routing.GameLogSlug+".*",
 		pubsub.SimpleQueueDurable,
 	)
 	if err != nil {
-		log.Fatalf("could not subscribe to %s: %v", routing.GameLogSlug + ".*", err)
+		log.Fatalf("could not subscribe to %s: %v", routing.GameLogSlug+".*", err)
 	}
 	fmt.Printf("Queue %v declared and bound!\n", queue.Name)
 
@@ -61,7 +61,7 @@ func main() {
 			if err != nil {
 				log.Fatalf("could not publish message: %v", err)
 			}
-		
+
 		case "resume":
 			fmt.Println("Sending resume message...")
 			err = pubsub.PublishJSON(
@@ -75,7 +75,7 @@ func main() {
 			if err != nil {
 				log.Fatalf("could not publish message: %v", err)
 			}
-		
+
 		case "quit":
 			fmt.Println("Quiting the game...")
 			return
@@ -84,7 +84,7 @@ func main() {
 			fmt.Println("Unknown command!")
 		}
 	}
-	
+
 	// wait for ctrl+c
 	// signalChan := make(chan os.Signal, 1)
 	// signal.Notify(signalChan, os.Interrupt)
