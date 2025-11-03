@@ -19,7 +19,6 @@ func main() {
 	}
 	defer conn.Close()
 	fmt.Println("Peril game server connected to RabbitMQ!")
-	fmt.Println("Press ctrl+c to stop the server")
 
 	ch, err := conn.Channel()
 	if err != nil {
