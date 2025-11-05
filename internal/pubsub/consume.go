@@ -118,6 +118,7 @@ func SubscribeJSON[T any](
 				msg.Nack(false, false)
 				fmt.Println("SubscribeJSON NackDiscard")
 			}
+			fmt.Print("> ")
 		}
 	}()
 
